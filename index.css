@@ -1,0 +1,112 @@
+html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      background-color: #010101;
+      background-image: radial-gradient(#1a1a1a 1px, transparent 1px);
+      background-size: 20px 20px;
+      font-family: 'Quicksand', sans-serif;
+      color: #f0f0f0;
+      overflow: hidden;
+    }
+
+    .window {
+      position: absolute;
+      top: 30%;
+      left: 50%;
+      transform: translate(-50%, -20%);
+      width: 700px;
+      backdrop-filter: blur(1px);
+      background-color: rgba(42, 42, 61, 0.1);
+      border: 2px solid rgb(255, 123, 0);
+      border-radius: 4px;
+      box-shadow: 0 8px 16px rgba(255, 165, 0, 0.2), 0 0 8px rgba(255, 165, 0, 0.3);
+      animation: fadeIn 1s ease-in;
+    }
+
+    .window .titlebar {
+      cursor: move;
+      padding: 10px;
+      background-color: rgb(255, 123, 0);
+      font-weight: bolder;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translate(-50%, -25%) scale(0.95); }
+      to { opacity: 1; transform: translate(-50%, -20%) scale(1); }
+    }
+
+    .profile {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      padding: 20px;
+      gap: 20px;
+      align-items: flex-start;
+    }
+
+    .profile-left {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      flex: 1;
+    }
+
+    .profile-left img {
+      width: 96px;
+      height: 96px;
+      border-radius: 50%;
+      border: 3px solid rgb(238, 150, 50);
+      margin-bottom: 10px;
+      transition: transform 0.3s ease;
+      box-shadow: 0 0 10px rgba(255,165,0,0.4);
+    }
+
+    .profile-left img:hover {
+      transform: scale(1.05);
+    }
+
+    .profile-left h1 {
+      margin: 5px 0;
+      font-size: 1.8em;
+      color: orange;
+      text-shadow: 0 0 5px rgba(255,165,0,0.5);
+    }
+
+    .profile-left small {
+      text-align: center;
+      font-size: 0.9em;
+      color: #ccc;
+    }
+
+    .profile-right {
+      flex: 2;
+    }
+
+    .about, .projects, .contact, .countdown {
+      margin-bottom: 16px;
+    }
+
+    .contact code {
+      line-height: inherit;
+      color: orange;
+      height: 1em;
+      display: inline-flex;
+      justify-content: center;
+      background-color: rgba(46, 46, 46, 0.5);
+    }
+
+    .projects ul {
+      list-style-type: circle;
+      padding-left: 20px;
+    }
+
+    .projects li:hover {
+      color: rgb(255, 94, 0);
+      transition: color 0.3s ease;
+    }
+
+    .footer {
+      font-size: 0.9em;
+      color: #aaa;
+    }
