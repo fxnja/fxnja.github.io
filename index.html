@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Finja's website :></title>
+  
+  <link rel="stylesheet" href="index.css">
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&display=swap" rel="stylesheet">
+
+</head>
+<body>
+  <div class="window" id="window">
+    <div class="titlebar" id="windowbar">
+      <span>root@senko:~ /home/finja/website.html</span>
+    </div>
+    <div class="profile">
+      <div class="profile-left">
+        <img src="https://cdn.discordapp.com/avatars/1306952822088011849/d9a18c4291aa8ef0607ec749dbf77e49.png?size=2048&format=webp&quality=lossless" alt="Profile Picture">
+        <h1>𝓕𝔁𝓷𝓳𝓪.𝓼𝓱</h1>
+        <small>🦊 Love foxes<br>💻 Coder oder sowas<br>🌠 Very Autistic</small>
+      </div>
+      <div class="profile-right">
+        <div class="about">
+          <p>Why hello there :></p>
+          <p>Was? Über mich? Ehh..</p>
+          <p>Also mein name ist Finja (ja ik, schwer zu erkennen xd) und ich probably die most random person die du je gesehen hast. In meiner Freizeit befasse ich mich ganz gern mit IT stuff (ja, ich kann programmieren o.o und NEIN ICH NEHME KEINE JOBS AN) und gehe gerne Fahrrad- und Skifahren. Außerdem liebe ich Füchse (weil die sind unfassbar cute, kannste nicht denyen!)</p>
+        </div>
+        <div class="projects">
+          <strong>Was ich so mache</strong>
+          <ul>
+            <li>Diese Webseite (lol)</li>
+            <li>Supporter aufm mcg discord</li>
+            <li>minecraft mit mods breaken</li>
+            <li>einige andere random dinge</li>
+          </ul>
+        </div>
+        <div class="contact">
+          <strong>Brieffreundschaft?</strong>
+          <p>Gerne kannst du mich bei Fragen auf Discord anschreiben! <code>cursed.fxnja</code></p>
+        </div>
+        <div class="countdown" id="countdown"></div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const windowEl = document.getElementById("window");
+    const windowBar = document.getElementById("windowbar");
+    let isDown = false;
+    let offset = [0, 0];
+
+    windowBar.addEventListener('mousedown', function(e) {
+      isDown = true;
+      offset = [
+        windowEl.offsetLeft - e.clientX,
+        windowEl.offsetTop - e.clientY
+      ];
+    }, true);
+
+    document.addEventListener('mouseup', () => isDown = false, true);
+
+    document.addEventListener('mousemove', function(e) {
+      e.preventDefault();
+      if (isDown) {
+        windowEl.style.left = (e.clientX + offset[0]) + 'px';
+        windowEl.style.top  = (e.clientY + offset[1]) + 'px';
+      }
+    }, true);
+
+    // SENKO SATURDAY
+    function updateCountdown() {
+      const now = new Date();
+      const day = now.getDay();
+      const distance = (6 - day + (day === 6 && now.getHours() >= 0 ? 7 : 0)) % 7;
+      let nextSaturday = new Date(now);
+      nextSaturday.setDate(now.getDate() + distance);
+      nextSaturday.setHours(0, 0, 0, 0);
+
+      const diff = nextSaturday - now;
+
+      const countdownEl = document.getElementById('countdown');
+
+      if (day === 6 && now.getHours() < 24) {
+        countdownEl.innerHTML = "🎉 It's Senko Saturday! Let's Pray! 🧡";
+      } else {
+        const hours = Math.floor(diff / 1000 / 60 / 60);
+        const minutes = Math.floor((diff / 1000 / 60) % 60);
+        const seconds = Math.floor((diff / 1000) % 60);
+        countdownEl.innerHTML = `⏳ Next Senko Saturday: ${hours}h ${minutes}m ${seconds}s`;
+      }
+    }
+
+    setInterval(updateCountdown, 500);
+    updateCountdown();
+  </script>
+</body>
+</html>
